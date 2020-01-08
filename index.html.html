@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Type Sagar</title>
+  <link rel="shortcut icon"  type="image/png" href="./favicon.png">
+  
+</head>
+
+<body  id = "bd"  
+style ="
+
+    background-color: #000;
+    color: blue;
+    font-size: 15pt;
+    margin: 25px;
+    padding: 0;
+    justify-content: center;
+    display: inline;
+    text-align: justify;"
+
+>
+
+<span style="position: absolute;
+right: 0;
+top: 0;margin-right: 7%;">bakeground Color : <input type="color"  onchange="changeback(this.value)"/>
+
+</span>
+<span style="position: absolute;
+left: 0;
+top: 0;margin-left: 7%;">Font Color : <input type="color"  onchange="changefont(this.value)"/></span> 
+<h1 id = "h1" style ="
+justify-content: center;
+
+text-align: center;"><u>Typing practice From Sagar</u></h1>
+<div   style="display: block; " >
+  
+   <div   name="copy" id = "p"
+  style="
+  margin-top:2%;
+  margin-left: 7%;
+  margin-right: 5%;
+  margin-bottom: 2%;
+  border : blue dotted 1px;
+  display: block;
+  padding: 10px;
+  letter-spacing: 1px;
+  width: 85%;
+  
+   "> 
+   <h3 style="margin:0;"> Copy box</h3><hr />
+   <p id="main" spellcheck="false" >
+    Intezar Karne Walo Ko Sirf Utna Hi Milta Hai, Jitna Koshish Karne Wale Chhod Dete Hain.
+    We try so hard to hide everything we're really feeling from those who probably need to know our true feelings the most. People try to bottle up their emotions, as if it's somehow wrong to have natural reactions to life
+  </p></div>
+
+  <div  id = "q"
+  style="
+  margin-top:2%;
+  margin-left:7%;
+  margin-right: 5%;
+  margin-bottom: 2%;
+  border :blue dotted 1px;
+ display: block;
+  width: 86%;
+ 
+ ">
+
+
+<h3 style="margin:0; padding: 10px;"> Typer Box</h3><hr style="margin:0;" />
+<div style="margin:0;
+border: none;
+ justify-content: center;
+ letter-spacing: 2px;
+ padding: 50px;
+ word-spacing: 8px;
+ text-shadow: 1px 0px white;
+ line-height: 1.6;
+ 
+ " id ="adit">
+
+</div>
+  </div>
+
+
+
+</div>
+
+<button id = "edit" style="background-color: blue; padding: 1%; margin-left: 40%;
+align-items: center;
+justify-content: center;" 
+onclick="oneditor()"><b>On Editor</b></button>
+
+  
+<button id = "new" style="background-color: blue; padding: 1%;
+align-items: center;
+justify-content: center;" 
+onclick="loadq()"><b>New Quote</b></button>
+  
+<script type="text/javascript">
+
+function changeback(color){
+  document.body.style.backgroundColor= color ;
+}
+
+function oneditor(){
+  
+   document.getElementById("adit").contentEditable = true;
+   document.getElementById("adit").spellcheck = false;
+   document.getElementById("adit").innerHTML = "Type from here...";
+}
+
+function changefont(color) {
+  document.body.style.color= color 
+  document.getElementById("edit").style.backgroundColor=color;
+  document.getElementById("new").style.backgroundColor=color;
+}
+
+function loadq()
+{
+  fetch("https://api.quotable.io/random" 
+)
+.then(response =>
+{
+  
+  return response.json();
+}).then(
+  res => {
+    return res.content;
+  }
+).then(
+  str =>{
+  const s = document.getElementById("main");
+  s.innerHTML = str;
+  }
+
+)
+
+
+
+
+.catch(err => {
+	console.log(err);
+});
+}
+
+function loadjoke() {
+
+  
+  fetch("https://baconipsum.com/api/?type=meat-and-filler&paras=1&format=text" 
+)
+.then(response =>
+{
+  
+  return response.text();
+}).then(
+  str =>{
+  const s = document.getElementById("main");
+  s.innerHTML = str;
+  }
+
+)
+
+.catch(err => {
+	console.log(err);
+});
+}
+
+
+
+</script>
+
+</body>
+</html>
