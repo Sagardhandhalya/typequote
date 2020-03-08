@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Type Sagar</title>
-  <link rel="shortcut icon"  type="image/png" href="./favicon.png">
-  
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Type Sagar</title>
+    <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+  </head>
 
-<body  id = "bd"  
-style ="
+  <body
+    id="bd"
+    style="
 
     background-color: #000;
     color: blue;
@@ -20,25 +20,49 @@ style ="
     justify-content: center;
     display: inline;
     text-align: justify;"
-
->
-
-<span style="position: absolute;
+  >
+    <span
+      style="position: absolute;
 right: 0;
-top: 0;margin-right: 7%;">bakeground Color : <input type="color"  onchange="changeback(this.value)"/>
+top: 0;margin-right: 7%;"
+      >bakeground Color :
+      <input type="color" onchange="changeback(this.value)" />
+    </span>
 
-</span>
-<span style="position: absolute;
+    <span
+      id="timer"
+      style="border:3px red solid;
+      padding-bottom: 10px;
+      margin-top: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 10px;
+      margin-left: 40%;
+      margin-right: 40%;
+      text-align: center;"
+    >
+      00:00
+    </span>
+    <span
+      style="position: absolute;
 left: 0;
-top: 0;margin-left: 7%;">Font Color : <input type="color"  onchange="changefont(this.value)"/></span> 
-<h1 id = "h1" style ="
+top: 0;margin-left: 7%;"
+      >Font Color : <input type="color" onchange="changefont(this.value)"
+    /></span>
+    <h1
+      id="h1"
+      style="
 justify-content: center;
 
-text-align: center;"><u>Typing practice From Sagar</u></h1>
-<div   style="display: block; " >
-  
-   <div   name="copy" id = "p"
-  style="
+text-align: center;"
+    >
+      <u>Typing practice From Sagar</u>
+    </h1>
+    <div style="display: block; ">
+      <div
+        name="copy"
+        id="p"
+        style="
   margin-top:2%;
   margin-left: 7%;
   margin-right: 5%;
@@ -49,15 +73,22 @@ text-align: center;"><u>Typing practice From Sagar</u></h1>
   letter-spacing: 1px;
   width: 85%;
   
-   "> 
-   <h3 style="margin:0;"> Copy box</h3><hr />
-   <p id="main" spellcheck="false" >
-    Intezar Karne Walo Ko Sirf Utna Hi Milta Hai, Jitna Koshish Karne Wale Chhod Dete Hain.
-    We try so hard to hide everything we're really feeling from those who probably need to know our true feelings the most. People try to bottle up their emotions, as if it's somehow wrong to have natural reactions to life
-  </p></div>
+   "
+      >
+        <h3 style="margin:0;">Copy box</h3>
+        <hr />
+        <p id="main" spellcheck="false">
+          Intezar Karne Walo Ko Sirf Utna Hi Milta Hai, Jitna Koshish Karne Wale
+          Chhod Dete Hain. We try so hard to hide everything we're really
+          feeling from those who probably need to know our true feelings the
+          most. People try to bottle up their emotions, as if it's somehow wrong
+          to have natural reactions to life
+        </p>
+      </div>
 
-  <div  id = "q"
-  style="
+      <div
+        id="q"
+        style="
   margin-top:2%;
   margin-left:7%;
   margin-right: 5%;
@@ -66,11 +97,12 @@ text-align: center;"><u>Typing practice From Sagar</u></h1>
  display: block;
   width: 86%;
  
- ">
-
-
-<h3 style="margin:0; padding: 10px;"> Typer Box</h3><hr style="margin:0;" />
-<div style="margin:0;
+ "
+      >
+        <h3 style="margin:0; padding: 10px;">Typer Box</h3>
+        <hr style="margin:0;" />
+        <div
+          style="margin:0;
 border: none;
  justify-content: center;
  letter-spacing: 2px;
@@ -79,100 +111,129 @@ border: none;
  text-shadow: 1px 0px white;
  line-height: 1.6;
  
- " id ="adit">
+ "
+          id="adit"
+        ></div>
+      </div>
+    </div>
 
-</div>
-  </div>
-
-
-
-</div>
-
-<button id = "edit" style="background-color: blue; padding: 1%; margin-left: 40%;
+    <button
+      id="edit"
+      style="background-color: blue; padding: 1%; margin-left: 40%;
 align-items: center;
-justify-content: center;" 
-onclick="oneditor()"><b>On Editor</b></button>
+justify-content: center;"
+      onclick="oneditor()"
+    >
+      <b>On Editor</b>
+    </button>
 
-  
-<button id = "new" style="background-color: blue; padding: 1%;
+    <button
+      id="new"
+      style="background-color: blue; padding: 1%;
 align-items: center;
-justify-content: center;" 
-onclick="loadq()"><b>New Quote</b></button>
-  
-<script type="text/javascript">
+justify-content: center;"
+      onclick="loadq()"
+    >
+      <b>New Quote</b>
+    </button>
 
-function changeback(color){
-  document.body.style.backgroundColor= color ;
-}
+    <script type="text/javascript">
+      function changeback(color) {
+        document.body.style.backgroundColor = color;
+      }
 
-function oneditor(){
-  
-   document.getElementById("adit").contentEditable = true;
-   document.getElementById("adit").spellcheck = false;
-   document.getElementById("adit").innerHTML = "Type from here...";
-}
+      function oneditor() {
+        document.getElementById("adit").contentEditable = true;
+        document.getElementById("adit").spellcheck = false;
+        document.getElementById("adit").innerHTML = "Type from here...";
+      }
 
-function changefont(color) {
-  document.body.style.color= color 
-  document.getElementById("edit").style.backgroundColor=color;
-  document.getElementById("new").style.backgroundColor=color;
-	document.getElementById("p").style.borderColor=color;
-  document.getElementById("q").style.borderColor=color;
-}
+      function changefont(color) {
+        document.body.style.color = color;
+        document.getElementById("edit").style.backgroundColor = color;
+        document.getElementById("new").style.backgroundColor = color;
+        document.getElementById("p").style.borderColor = color;
+        document.getElementById("q").style.borderColor = color;
+        document.getElementById("timer").style.borderColor = color;
+      }
 
-function loadq()
-{
-  fetch("https://api.quotable.io/random" 
-)
-.then(response =>
-{
-  
-  return response.json();
-}).then(
-  res => {
-    return res.content;
-  }
-).then(
-  str =>{
-  const s = document.getElementById("main");
-  s.innerHTML = str;
-  }
+      function connverinclock(timer) {
+        var minute = parseInt(timer / 60);
+        var secound = timer % 60;
 
-)
+        if (minute < 10) minute = `0${minute}`;
+        if (secound < 10) secound = `0${secound}`;
 
+        document.getElementById("timer").innerHTML = `${minute} : ${secound}`;
+      }
 
+      function loadq() {
+        fetch("https://api.quotable.io/random")
+          .then(response => {
+            return response.json();
+          })
+          .then(res => {
+            return res.content;
+          })
+          .then(str => {
+            console.log(count);
+            const s = document.getElementById("main");
+            s.innerHTML = str;
+          })
 
+          .catch(err => {
+            console.log(err);
+          });
+      }
 
-.catch(err => {
-	console.log(err);
-});
-}
+      function loadjoke() {
+        fetch(
+          "https://baconipsum.com/api/?type=meat-and-filler&paras=1&format=text"
+        )
+          .then(response => {
+            return response.text();
+          })
+          .then(str => {
+            const s = document.getElementById("main");
+            s.innerHTML = str;
+            var speed = prompt(
+              "Please enter your speed in word per minute",
+              20
+            );
+            var count = 0;
+            for (var i = 0; i < src.length; i++) {
+              if (src[i] == " ") {
+                count++;
+              }
+            }
 
-function loadjoke() {
+            var time = parseInt((60 * count) / speed);
+            var x = time;
+            var interval = setInterval(() => {
+              connverinclock(time);
+              if (time === 0) {
+                clearInterval(interval);
+                var usertext = document.getElementById("adit").innerHTML;
+                var currrentspeed = parseInt(usertext.length / x);
+                var c = 0;
+                for (var i = 0; i < usertext.length; i++) {
+                  if (usertext[i] == src[i]) {
+                    c++;
+                  }
+                }
+                var acu = parseInt((c / usertext.length) * 100);
+                alert(
+                  ` Stop............... \n Current speed : ${currrentspeed} char/second \n Accurecy : ${acu} %`
+                );
+              }
+              time = time - 1;
+            }, 1000);
+          })
 
-  
-  fetch("https://baconipsum.com/api/?type=meat-and-filler&paras=1&format=text" 
-)
-.then(response =>
-{
-  
-  return response.text();
-}).then(
-  str =>{
-  const s = document.getElementById("main");
-  s.innerHTML = str;
-  }
-
-)
-
-.catch(err => {
-	console.log(err);
-});
-}
-
-
-
-</script>
-
-</body>
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    </script>
+  </body>
 </html>
