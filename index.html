@@ -9,6 +9,7 @@
   </head>
 
   <body
+    onload="insructions()"
     id="bd"
     style="
 
@@ -113,6 +114,7 @@ border: none;
  
  "
           id="adit"
+          onclick="oneditor()"
         ></div>
       </div>
     </div>
@@ -122,9 +124,9 @@ border: none;
       style="background-color: blue; padding: 1%; margin-left: 40%;
 align-items: center;
 justify-content: center;"
-      onclick="oneditor()"
+      onclick="setspeed()"
     >
-      <b>On Editor</b>
+      <b>Set max speed</b>
     </button>
 
     <button
@@ -138,6 +140,13 @@ justify-content: center;"
     </button>
 
     <script type="text/javascript">
+     
+      function insructions() {
+        confirm(
+          "How to use this editor...\n 1.By set max speed button you can set your maximum speed by using this speed editor will setup timer that you have to complete given text in that time.if you are not able to do that than just decrese your speed after timer end you can see your real current speed in char/min.\n 2.text and background both color are fully customizable. \n 3.Every time you will get new quote to type."
+        );
+      }
+
       function changeback(color) {
         document.body.style.backgroundColor = color;
       }
@@ -145,7 +154,7 @@ justify-content: center;"
       function oneditor() {
         document.getElementById("adit").contentEditable = true;
         document.getElementById("adit").spellcheck = false;
-        document.getElementById("adit").innerHTML = "Type from here...";
+        document.getElementById("adit").innerHTML = "";
       }
 
       function changefont(color) {
@@ -166,6 +175,10 @@ justify-content: center;"
 
         document.getElementById("timer").innerHTML = `${minute} : ${secound}`;
       }
+      var speed;
+      function setspeed() {
+        speed = prompt("Please enter your speed in character per minute", 200);
+      }
 
       function loadq() {
         fetch("https://api.quotable.io/random")
@@ -176,9 +189,34 @@ justify-content: center;"
             return res.content;
           })
           .then(str => {
-            console.log(count);
             const s = document.getElementById("main");
             s.innerHTML = str;
+
+            var count = 0;
+
+            var time = parseInt((60 * str.length) / speed);
+            var x = time;
+            var interval = setInterval(() => {
+              connverinclock(time);
+              if (time === 0) {
+                clearInterval(interval);
+                var usertext = document.getElementById("adit").innerHTML;
+                var currrentspeed = parseInt((usertext.length * 60) / x);
+                /*var c = 0;
+                for (var i = 0; i < usertext.length; i++) {
+                  if (usertext[i] == str[i]) {
+                    c++;
+                  }
+                }
+                var acu = parseInt((c / usertext.length) * 100);
+*/
+                confirm(
+                  ` Stop............... \n Current speed : ${currrentspeed} char/minute\n`
+                );
+                document.getElementById("adit").innerHTML = "";
+              }
+              time = time - 1;
+            }, 1000);
           })
 
           .catch(err => {
@@ -196,38 +234,6 @@ justify-content: center;"
           .then(str => {
             const s = document.getElementById("main");
             s.innerHTML = str;
-            var speed = prompt(
-              "Please enter your speed in word per minute",
-              20
-            );
-            var count = 0;
-            for (var i = 0; i < src.length; i++) {
-              if (src[i] == " ") {
-                count++;
-              }
-            }
-
-            var time = parseInt((60 * count) / speed);
-            var x = time;
-            var interval = setInterval(() => {
-              connverinclock(time);
-              if (time === 0) {
-                clearInterval(interval);
-                var usertext = document.getElementById("adit").innerHTML;
-                var currrentspeed = parseInt(usertext.length / x);
-                var c = 0;
-                for (var i = 0; i < usertext.length; i++) {
-                  if (usertext[i] == src[i]) {
-                    c++;
-                  }
-                }
-                var acu = parseInt((c / usertext.length) * 100);
-                alert(
-                  ` Stop............... \n Current speed : ${currrentspeed} char/second \n Accurecy : ${acu} %`
-                );
-              }
-              time = time - 1;
-            }, 1000);
           })
 
           .catch(err => {
